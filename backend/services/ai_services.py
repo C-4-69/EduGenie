@@ -88,3 +88,33 @@ Text:
     )
 
     return response.text
+
+def generate_learning_path(topic: str) -> str:
+    response = client.models.generate_content(
+        model="gemini-3.5-flash",
+        contents=f"""
+You are EduGenie, an educational AI assistant.
+
+Create a structured learning path for the following topic:
+
+{topic}
+
+Organize it into:
+
+1. Prerequisites
+2. Beginner level
+3. Intermediate level
+4. Advanced level
+5. Practical projects
+6. Practice and revision
+
+For each stage:
+- List the important concepts to learn.
+- Give a short explanation.
+- Suggest what the learner should practice.
+
+Make the roadmap practical and suitable for a student.
+"""
+    )
+
+    return response.text

@@ -3,7 +3,8 @@ from services.ai_services import (
     ask_ai,
     explain_topic,
     generate_quiz,
-    summarize_text
+    summarize_text,
+    generate_learning_path
 )
 
 app = FastAPI(title="EduGenie")
@@ -48,4 +49,12 @@ def summarize(text: str):
     summary = summarize_text(text)
     return {
         "summary": summary
+    }
+
+@app.get("/learning-path")
+def learning_path(topic: str):
+    path = generate_learning_path(topic)
+    return {
+        "topic": topic,
+        "learning_path": path
     }
