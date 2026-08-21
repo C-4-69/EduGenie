@@ -1,4 +1,5 @@
 from fastapi import FastAPI
+from fastapi.middleware.cors import CORSMiddleware
 from services.ai_services import (
     ask_ai,
     explain_topic,
@@ -8,6 +9,15 @@ from services.ai_services import (
 )
 
 app = FastAPI(title="EduGenie")
+
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 
 @app.get("/")
