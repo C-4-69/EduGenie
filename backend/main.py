@@ -1,5 +1,10 @@
 from fastapi import FastAPI
-from services.ai_services import ask_ai, explain_topic, generate_quiz
+from services.ai_services import (
+    ask_ai,
+    explain_topic,
+    generate_quiz,
+    summarize_text
+)
 
 app = FastAPI(title="EduGenie")
 
@@ -36,4 +41,11 @@ def quiz(topic: str):
     return {
         "topic": topic,
         "quiz": quiz_data
+    }
+
+@app.get("/summarize")
+def summarize(text: str):
+    summary = summarize_text(text)
+    return {
+        "summary": summary
     }

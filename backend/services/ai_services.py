@@ -67,3 +67,24 @@ Topic:
     )
 
     return response.text
+
+def summarize_text(text: str) -> str:
+    response = client.models.generate_content(
+        model="gemini-3.5-flash",
+        contents=f"""
+You are EduGenie, an educational AI assistant.
+
+Summarize the following educational material.
+
+Requirements:
+- Keep the important information.
+- Use simple language.
+- Organize the summary with headings and bullet points.
+- Do not add information that isn't present in the original text.
+
+Text:
+{text}
+"""
+    )
+
+    return response.text
