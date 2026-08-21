@@ -1,5 +1,5 @@
 AI powered educational assistant
-
+made for students
 ## Features
     - Intelligent Question Answering
     - Simplified Concept Explanations
