@@ -44,3 +44,26 @@ Topic:
     )
 
     return response.text
+
+def generate_quiz(topic: str) -> str:
+    response = client.models.generate_content(
+        model="gemini-3.5-flash",
+        contents=f"""
+You are EduGenie, an educational AI assistant.
+
+Create a short quiz about the following topic.
+
+Generate exactly 5 multiple-choice questions.
+
+For each question provide:
+1. The question
+2. Four options labeled A, B, C, D
+3. The correct answer
+4. A one-sentence explanation
+
+Topic:
+{topic}
+"""
+    )
+
+    return response.text
