@@ -23,3 +23,24 @@ Student question:
     )
 
     return response.text
+
+
+def explain_topic(topic: str) -> str:
+    response = client.models.generate_content(
+        model="gemini-3.5-flash",
+        contents=f"""
+You are EduGenie, an educational AI assistant.
+
+Explain the following topic to a student in very simple language.
+Use:
+- A simple definition
+- An intuitive explanation
+- A real-world example
+- Key points to remember
+
+Topic:
+{topic}
+"""
+    )
+
+    return response.text

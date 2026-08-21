@@ -1,5 +1,6 @@
 from fastapi import FastAPI
 from services.ai_services import ask_ai
+from services.ai_services import explain_topic
 
 app = FastAPI(title="EduGenie")
 
@@ -20,4 +21,12 @@ def ask(question: str):
     return {
         "question": question,
         "answer": answer
+    }
+
+@app.get("/explain")
+def explain(topic: str):
+    explanation = explain_topic(topic)
+    return {
+        "topic": topic,
+        "explanation": explanation
     }
